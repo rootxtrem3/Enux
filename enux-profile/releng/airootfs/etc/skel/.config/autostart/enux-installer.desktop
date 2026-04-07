@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Enux
+Comment=Launch the Enux installer when the live desktop starts
+Exec=/usr/local/bin/launch-enux-installer
+Icon=drive-harddisk
+Terminal=false
+X-GNOME-Autostart-enabled=true
+StartupNotify=true

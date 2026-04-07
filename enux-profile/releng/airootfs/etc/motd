@@ -1,0 +1,8 @@
+Welcome to Enux.
+
+The live session is intended for evaluation and installation.
+Use the desktop shortcut named "Install Enux" to start the graphical installer.
+
+Networking is managed by NetworkManager.
+You can also install from a terminal using archinstall if the graphical installer
+package has not been added to your build repository yet.

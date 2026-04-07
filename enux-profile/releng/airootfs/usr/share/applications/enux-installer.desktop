@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Enux
+Comment=Install Enux to your computer
+Exec=/usr/local/bin/launch-enux-installer
+Icon=drive-harddisk
+Terminal=false
+Categories=System;Settings;
+StartupNotify=true

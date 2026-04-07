@@ -1,0 +1,12 @@
+[Unit]
+Description=Create the Enux live session user
+Before=display-manager.service
+After=systemd-sysusers.service local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/enux-live-user-setup
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

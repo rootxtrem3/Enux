@@ -1,0 +1,2 @@
+Defaults lecture = never
+enux ALL=(ALL:ALL) NOPASSWD: ALL

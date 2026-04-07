@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+user="enux"
+home_dir="/home/${user}"
+
+if ! id -u "${user}" >/dev/null 2>&1; then
+    useradd -m -s /bin/bash -G wheel,audio,video,storage,network,docker "${user}"
+    passwd -d "${user}" >/dev/null 2>&1 || true
+fi
+
+mkdir -p "${home_dir}"
+cp -a /etc/skel/. "${home_dir}/"
+chown -R "${user}:${user}" "${home_dir}"

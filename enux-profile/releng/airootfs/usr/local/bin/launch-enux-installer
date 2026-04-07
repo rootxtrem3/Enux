@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if command -v calamares >/dev/null 2>&1; then
+    exec pkexec calamares -d
+fi
+
+message="Calamares is not installed in this ISO build. Add the calamares package through a custom Enux repository or a locally built package, then rebuild the image."
+
+if command -v zenity >/dev/null 2>&1; then
+    exec zenity --error --width=480 --title="Install Enux" --text="${message}"
+fi
+
+printf '%s\n' "${message}" >&2
+exit 1
