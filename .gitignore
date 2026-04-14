@@ -1,2 +1,10 @@
 /out/
 /work/
+/obsidian/
+/.codex
+/localrepo/
+/calamares/pkg/
+/calamares/src/
+/calamares/*.pkg.tar.*
+/calamares/*.tar.gz
+/CLAUDE.md

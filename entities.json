@@ -1,0 +1,17 @@
+{
+  "people": [
+    "RootX"
+  ],
+  "projects": [
+    "Package",
+    "Phase",
+    "Calamares",
+    "Build",
+    "Linux",
+    "Release",
+    "Arch",
+    "Base",
+    "Project",
+    "Bootloader"
+  ]
+}
