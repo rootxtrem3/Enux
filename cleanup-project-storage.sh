@@ -7,20 +7,14 @@ targets=(
   "out"
   "work"
   "localrepo"
-  "calamares/pkg"
-  "calamares/src"
-)
-
-glob_targets=(
-  "calamares/*.pkg.tar.*"
-  "calamares/*.tar.gz"
 )
 
 usage() {
   cat <<'EOF'
 Usage: ./cleanup-project-storage.sh [--force]
 
-Removes project-local build outputs and package artifacts that consume storage.
+Removes project-local build outputs that consume storage while leaving
+Calamares package sources and artifacts intact.
 
 Default mode is a dry run. Pass --force to delete the files.
 EOF
@@ -45,15 +39,6 @@ for rel in "${targets[@]}"; do
     existing_paths+=("${abs}")
   fi
 done
-
-shopt -s nullglob
-for pattern in "${glob_targets[@]}"; do
-  matches=( "${repo_root}"/${pattern} )
-  if (( ${#matches[@]} > 0 )); then
-    existing_paths+=( "${matches[@]}" )
-  fi
-done
-shopt -u nullglob
 
 if (( ${#existing_paths[@]} == 0 )); then
   echo "Nothing to remove."
