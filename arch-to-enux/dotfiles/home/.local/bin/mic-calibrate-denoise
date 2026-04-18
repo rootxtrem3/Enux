@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Keep this aligned with your preferred gain/noise profile.
+TARGET_GAIN="75%"
+DENOISED_SOURCE_NAME="mic_denoised"
+AEC_SINK_NAME="playback_with_aec"
+
+# Pick the first hardware input source (skip monitors and virtual denoised source).
+SOURCE_MASTER="$(
+  pactl list short sources \
+    | awk '$2 !~ /\.monitor$/ && $2 != "mic_denoised" {print $2; exit}'
+)"
+
+if [[ -z "${SOURCE_MASTER}" ]]; then
+  exit 0
+fi
+
+# Calibrate raw mic gain first to lower baseline background pickup.
+pactl set-source-volume "${SOURCE_MASTER}" "${TARGET_GAIN}" || true
+
+# Ensure only one denoise module instance is active.
+while read -r module_id _; do
+  pactl unload-module "${module_id}" || true
+done < <(pactl list short modules | awk '$2 == "module-echo-cancel" && $0 ~ /source_name=mic_denoised/ {print $1}')
+
+pactl load-module module-echo-cancel \
+  source_name="${DENOISED_SOURCE_NAME}" \
+  sink_name="${AEC_SINK_NAME}" \
+  source_master="${SOURCE_MASTER}" \
+  aec_method=webrtc \
+  aec_args="noise_suppression=1 digital_gain_control=1 analog_gain_control=0 voice_detection=1" \
+  use_master_format=1 >/dev/null
+
+# Route applications to the denoised mic.
+pactl set-default-source "${DENOISED_SOURCE_NAME}" || true

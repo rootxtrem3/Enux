@@ -1,0 +1,13 @@
+NAME="EnuxOS"
+PRETTY_NAME="EnuxOS"
+ID=arch
+ID_LIKE=arch
+VARIANT="EnuxOS"
+VARIANT_ID=enuxos
+BUILD_ID=rolling
+ANSI_COLOR="0;36"
+HOME_URL="https://github.com/rootxtrem3/Enux"
+DOCUMENTATION_URL="https://github.com/rootxtrem3/Enux"
+SUPPORT_URL="https://github.com/rootxtrem3/Enux/issues"
+BUG_REPORT_URL="https://github.com/rootxtrem3/Enux/issues"
+LOGO=archlinux-logo

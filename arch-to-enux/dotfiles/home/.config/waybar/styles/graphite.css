@@ -1,0 +1,66 @@
+/* Graphite minimal style for Waybar */
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "IBM Plex Sans", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 12px;
+}
+
+window#waybar {
+  background: #15171c;
+  color: #d5d7dc;
+  border-bottom: 1px solid #252a33;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  margin: 3px 2px;
+  border-radius: 8px;
+  background: #1c2028;
+  color: #b5bcc8;
+}
+
+#workspaces button.active {
+  background: #8aa1ff;
+  color: #0f1218;
+}
+
+#workspaces button:hover {
+  background: #242a36;
+}
+
+#clock,
+#tray,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#cpu,
+#memory,
+#custom-cava,
+#custom-hyprsunset,
+#custom-launcher,
+#custom-power,
+#window {
+  padding: 0 8px;
+  margin: 3px 2px;
+  border-radius: 8px;
+  background: #1c2028;
+}
+
+#custom-launcher {
+  background-image: url("icons/hyprland.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0 4px;
+  background-color: #222733;
+}
+
+#custom-power {
+  background: #2b1b1d;
+  color: #ffb3b3;
+}

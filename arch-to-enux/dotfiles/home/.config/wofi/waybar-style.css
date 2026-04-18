@@ -1,0 +1,35 @@
+* {
+  font-family: "Lexend", "SF Pro Display", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 14px;
+}
+
+window {
+  background: #101218;
+  border: 1px solid #2b3042;
+  border-radius: 12px;
+}
+
+#input {
+  margin: 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #151a24;
+  color: #e6e9f0;
+}
+
+#inner-box {
+  margin: 6px 10px 12px 10px;
+}
+
+#entry {
+  padding: 10px 8px;
+  margin: 6px;
+  border-radius: 8px;
+  color: #cfd6ff;
+  text-align: center;
+}
+
+#entry:selected {
+  background: #4f6fff;
+  color: #0b0e14;
+}

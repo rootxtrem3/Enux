@@ -1,0 +1,122 @@
+{
+  "layer": "top",
+  "position": "right",
+  "height": 0,
+  "width": 32,
+  "margin": "4 4 4 0",
+  "spacing": 0,
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "clock",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "cpu",
+    "memory",
+    "custom/power"
+  ],
+  "modules-center": [],
+  "modules-right": [],
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format": "{icon}",
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "*": 6
+    },
+    "format-icons": {
+      "1": "󰲠",
+      "2": "󰲢",
+      "3": "󰲤",
+      "4": "󰲦",
+      "5": "󰲨",
+      "6": "󰲪",
+      "7": "󰲬",
+      "8": "󰲮",
+      "9": "󰲰",
+      "10": "󰿬",
+      "active": "",
+      "default": ""
+    }
+  },
+  "network": {
+    "interval": 3,
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈁",
+    "format-linked": "󰈁",
+    "format-disconnected": "󰖪",
+    "on-click": "/home/rootx/.local/bin/enux-network-popup nmtui",
+    "on-click-right": "/home/rootx/.local/bin/enux-network-popup list",
+    "rotate": 270
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon}{volume}%",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "kitty -e pw-top"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "󰃠{percent}%"
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "󰁹{capacity}%",
+    "format-charging": "󰂄{capacity}%",
+    "format-plugged": "󰚥{capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "cpu": {
+    "interval": 3,
+    "format": "󱘚{usage}%",
+    "on-click": "kitty -e btop"
+  },
+  "memory": {
+    "interval": 3,
+    "format": "󰍛{percentage}%",
+    "on-click": "kitty -e btop"
+  },
+  "clock": {
+    "interval": 1,
+    "format": "󰥔{:%H:%M}",
+    "tooltip-format": "{:%A, %B %d %Y  %H:%M:%S}"
+  },
+  "custom/launcher": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "wofi --show drun"
+  },
+  "custom/power": {
+    "format": "󰤆",
+    "tooltip": false,
+    "on-click": "/home/rootx/.config/wofi/power.sh"
+  }
+}

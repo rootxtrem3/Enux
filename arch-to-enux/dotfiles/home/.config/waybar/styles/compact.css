@@ -1,0 +1,51 @@
+/* Compact (Matugen-based) */
+@import url("../../.cache/matugen/waybar.css");
+
+* {
+  font-family: "Iosevka", "JetBrainsMono Nerd Font", monospace;
+  font-size: 11px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  margin-top: 0;
+}
+
+#custom-launcher,
+#workspaces,
+#window,
+#tray,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#cpu,
+#memory,
+#clock,
+#custom-power,
+#custom-cava,
+#custom-hyprsunset {
+  margin: 0 1px;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+#workspaces {
+  padding: 1px 4px;
+}
+
+#workspaces button {
+  padding: 0 3px;
+  border-radius: 8px;
+}
+
+#custom-launcher {
+  background-image: url("icons/hyprland.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  min-width: 26px;
+  min-height: 24px;
+  padding: 0 4px;
+}

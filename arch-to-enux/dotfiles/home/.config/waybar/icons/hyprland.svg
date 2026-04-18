@@ -1,0 +1,14 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hypr-blue" x1="24" y1="16" x2="116" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6EE0FF"/>
+      <stop offset="1" stop-color="#2AA4F4"/>
+    </linearGradient>
+    <linearGradient id="hypr-cyan" x1="40" y1="32" x2="104" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C8F3FF"/>
+      <stop offset="1" stop-color="#6EDBFF"/>
+    </linearGradient>
+  </defs>
+  <path d="M20 18C20 16.8954 20.8954 16 22 16H58.5C59.1123 16 59.7015 16.2813 60.0694 16.7672L108.07 80.7672C109.14 82.1915 108.128 84.25 106.331 84.25H69.5C68.8877 84.25 68.2985 83.9687 67.9306 83.4828L20.9306 19.4828C20.6481 19.1175 20.5 18.6508 20.5 18.1714V18Z" fill="url(#hypr-blue)"/>
+  <path d="M44 40C44 38.8954 44.8954 38 46 38H82.5C83.1123 38 83.7015 38.2813 84.0694 38.7672L108.07 70.7672C109.14 72.1915 108.128 74.25 106.331 74.25H77.5C76.8877 74.25 76.2985 73.9687 75.9306 73.4828L44.9306 41.4828C44.6481 41.1175 44.5 40.6508 44.5 40.1714V40Z" fill="url(#hypr-cyan)"/>
+</svg>

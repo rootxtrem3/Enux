@@ -1,0 +1,44 @@
+/* Pill (Matugen-based) */
+@import url("../../.cache/matugen/waybar.css");
+
+* {
+  font-family: "SF Pro Display", "Lexend", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 12px;
+}
+
+#custom-launcher,
+#workspaces,
+#window,
+#tray,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#cpu,
+#memory,
+#clock,
+#custom-power,
+#custom-cava,
+#custom-hyprsunset {
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+#workspaces {
+  padding: 2px 8px;
+}
+
+#workspaces button {
+  border-radius: 999px;
+  padding: 0 6px;
+}
+
+#custom-launcher {
+  background-image: url("icons/hyprland.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0 6px;
+}

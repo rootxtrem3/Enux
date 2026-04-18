@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+resolve_bin() {
+  local primary="$1"
+  local fallback="$2"
+
+  if command -v "$primary" >/dev/null 2>&1; then
+    echo "$primary"
+    return 0
+  fi
+
+  if command -v "$fallback" >/dev/null 2>&1; then
+    echo "$fallback"
+    return 0
+  fi
+
+  return 1
+}
+
+if [ "$#" -lt 1 ]; then
+  echo "Usage: $0 /path/to/image [swww img args...]" >&2
+  exit 1
+fi
+
+image_path="$1"
+shift || true
+
+if [ ! -f "$image_path" ]; then
+  echo "Image not found: $image_path" >&2
+  exit 1
+fi
+
+SWWW_BIN="${SWWW_BIN:-}"
+SWWW_DAEMON_BIN="${SWWW_DAEMON_BIN:-}"
+
+if [ -z "$SWWW_BIN" ]; then
+  SWWW_BIN="$(resolve_bin swww awww || true)"
+fi
+
+if [ -z "$SWWW_DAEMON_BIN" ]; then
+  SWWW_DAEMON_BIN="$(resolve_bin swww-daemon awww-daemon || true)"
+fi
+
+if [ -z "$SWWW_BIN" ] || [ -z "$SWWW_DAEMON_BIN" ]; then
+  echo "Wallpaper backend not found. Install swww/awww or set SWWW_BIN and SWWW_DAEMON_BIN." >&2
+  exit 1
+fi
+
+if ! "$SWWW_BIN" query >/dev/null 2>&1; then
+  "$SWWW_DAEMON_BIN" >/dev/null 2>&1 &
+  sleep 0.2
+fi
+
+default_transition_args=(
+  --transition-type grow
+  --transition-pos center
+  --transition-duration 1.4
+  --transition-fps 120
+  --transition-bezier .22,1,.36,1
+)
+
+if [ "$#" -eq 0 ]; then
+  transition_types=(grow outer wave wipe left right top bottom center any random)
+  transition_positions=(center top bottom left right top-left top-right bottom-left bottom-right)
+  transition_beziers=(
+    .22,1,.36,1
+    .25,.1,.25,1
+    .16,1,.3,1
+    .4,0,.2,1
+  )
+  transition_durations=(0.9 1.1 1.3 1.5 1.8)
+  transition_fps=(90 120 144)
+
+  random_type="${transition_types[RANDOM % ${#transition_types[@]}]}"
+  random_pos="${transition_positions[RANDOM % ${#transition_positions[@]}]}"
+  random_bezier="${transition_beziers[RANDOM % ${#transition_beziers[@]}]}"
+  random_duration="${transition_durations[RANDOM % ${#transition_durations[@]}]}"
+  random_fps="${transition_fps[RANDOM % ${#transition_fps[@]}]}"
+
+  default_transition_args=(
+    --transition-type "$random_type"
+    --transition-pos "$random_pos"
+    --transition-duration "$random_duration"
+    --transition-fps "$random_fps"
+    --transition-bezier "$random_bezier"
+  )
+
+  "$SWWW_BIN" img "$image_path" "${default_transition_args[@]}"
+else
+"$SWWW_BIN" img "$image_path" "$@"
+fi
+
+if command -v matugen >/dev/null 2>&1 && [ -f "$HOME/.config/matugen/config.toml" ]; then
+  # Matugen 4.x prompts for a source color in TTY sessions; force a stable choice
+  # so non-interactive launches (wofi, keybinds) don't crash.
+  matugen image "$image_path" \
+    --config "$HOME/.config/matugen/config.toml" \
+    --quiet \
+    --source-color-index 0
+
+  # Keep compatibility with the existing palette post-processor.
+  if [ -x "$HOME/.config/matugen/scripts/apply_matugen_palette.py" ]; then
+    "$HOME/.config/matugen/scripts/apply_matugen_palette.py"
+  fi
+fi
+
+if command -v hyprctl >/dev/null 2>&1; then
+  hyprctl reload >/dev/null 2>&1 || true
+fi
+
+if command -v pkill >/dev/null 2>&1; then
+  # USR2 reload can trigger a Waybar GLib assertion on some builds.
+  # Do a clean restart instead after palette files are regenerated.
+  pkill -x waybar 2>/dev/null || true
+  (waybar >/dev/null 2>&1 &)
+fi
+
+# Apply colors to running Kitty instances if remote control is available.
+if command -v kitty >/dev/null 2>&1; then
+  kitty @ set-colors --all --configured "$HOME/.cache/matugen/kitty.conf" >/dev/null 2>&1 || \
+  kitty @ load-config >/dev/null 2>&1 || true
+fi
+
+echo "$image_path" > "$HOME/.cache/current_wallpaper"
+ln -sf "$image_path" "$HOME/.cache/hyprlock-wallpaper"

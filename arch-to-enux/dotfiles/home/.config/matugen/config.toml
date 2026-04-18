@@ -1,0 +1,20 @@
+# Matugen configuration generated to hook wallpapers through swww.
+
+[config.wallpaper]
+# Keep command defined, but disable automatic set; wallpaper is set by wrapper script.
+command = "swww"
+arguments = ["img", "--transition-type", "any", "--transition-duration", "2"]
+set = false
+
+# Export a small palette JSON other tools can consume.
+[templates.palette]
+input_path = "~/.config/matugen/templates/colors.json.tmpl"
+output_path = "~/.cache/matugen/colors.json"
+
+[templates.waybar]
+input_path = "~/.config/matugen/templates/waybar.css.tmpl"
+output_path = "~/.cache/matugen/waybar.css"
+
+[templates.kitty]
+input_path = "~/.config/matugen/templates/kitty.conf.tmpl"
+output_path = "~/.cache/matugen/kitty.conf"

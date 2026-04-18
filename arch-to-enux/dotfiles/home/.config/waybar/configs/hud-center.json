@@ -1,0 +1,84 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 26,
+  "margin": "4 80 0 80",
+  "spacing": 6,
+  "modules-left": [],
+  "modules-center": [
+    "cpu",
+    "memory",
+    "battery",
+    "clock"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "custom/power"
+  ],
+  "network": {
+    "interval": 3,
+    "format-wifi": "󰤨  {signalStrength}%",
+    "format-ethernet": "󰈁  {ipaddr}",
+    "format-linked": "󰈁  {ifname}",
+    "format-disconnected": "󰖪",
+    "on-click": "/home/rootx/.local/bin/enux-network-popup nmtui",
+    "on-click-right": "/home/rootx/.local/bin/enux-network-popup list"
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "kitty -e pw-top"
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "󰁹  {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰚥  {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "cpu": {
+    "interval": 3,
+    "format": "󰍛  {usage}%",
+    "on-click": "kitty -e btop"
+  },
+  "memory": {
+    "interval": 3,
+    "format": "󰘚  {percentage}%",
+    "on-click": "kitty -e btop"
+  },
+  "clock": {
+    "interval": 1,
+    "format": "󰥔  {:%H:%M}",
+    "tooltip-format": "{:%A, %B %d %Y  %H:%M:%S}"
+  },
+  "custom/power": {
+    "format": "󰐥",
+    "tooltip": false,
+    "on-click": "/home/rootx/.config/wofi/power.sh"
+  }
+}

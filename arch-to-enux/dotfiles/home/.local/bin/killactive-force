@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+json=$(hyprctl activewindow -j 2>/dev/null || true)
+
+if [[ -z "$json" ]]; then
+  exit 1
+fi
+
+pid=$(printf '%s' "$json" | python3 - <<'PY'
+import json, sys
+try:
+    data = json.load(sys.stdin)
+    pid = data.get("pid", 0)
+    print(pid if pid is not None else 0)
+except Exception:
+    print(0)
+PY
+)
+
+class=$(printf '%s' "$json" | python3 - <<'PY'
+import json, sys
+try:
+    data = json.load(sys.stdin)
+    cls = data.get("class") or data.get("initialClass") or ""
+    print(cls)
+except Exception:
+    print("")
+PY
+)
+
+# If this is a Flatpak app, try flatpak kill first.
+if command -v flatpak >/dev/null 2>&1; then
+  if [[ "$class" =~ ^[a-z0-9]+\.[A-Za-z0-9._-]+$ ]]; then
+    if flatpak kill "$class" >/dev/null 2>&1; then
+      exit 0
+    fi
+  fi
+fi
+
+# Try direct PID kill.
+if [[ -n "$pid" && "$pid" != "0" ]]; then
+  if kill -9 "$pid" >/dev/null 2>&1; then
+    exit 0
+  fi
+fi
+
+# Fallback: kill by class (all instances).
+if [[ -n "$class" ]]; then
+  pkill -9 -f "$class" >/dev/null 2>&1 && exit 0
+fi
+
+exit 1

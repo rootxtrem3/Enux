@@ -1,0 +1,66 @@
+/* Mono high-contrast style for Waybar */
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "Space Grotesk", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 12px;
+}
+
+window#waybar {
+  background: #0c0c0c;
+  color: #f5f5f5;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  margin: 3px 2px;
+  border-radius: 2px;
+  background: #151515;
+  color: #dcdcdc;
+}
+
+#workspaces button.active {
+  background: #f5f5f5;
+  color: #0c0c0c;
+}
+
+#workspaces button:hover {
+  background: #202020;
+}
+
+#clock,
+#tray,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#cpu,
+#memory,
+#custom-cava,
+#custom-hyprsunset,
+#custom-launcher,
+#custom-power,
+#window {
+  padding: 0 8px;
+  margin: 3px 2px;
+  border-radius: 2px;
+  background: #151515;
+}
+
+#custom-launcher {
+  background-image: url("icons/hyprland.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0 4px;
+  background-color: #1a1a1a;
+}
+
+#custom-power {
+  background: #2a2a2a;
+  color: #f5f5f5;
+}

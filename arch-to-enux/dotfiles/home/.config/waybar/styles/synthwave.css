@@ -1,0 +1,69 @@
+/* Synthwave sunset style for Waybar */
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "Oxanium", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 13px;
+}
+
+window#waybar {
+  background: linear-gradient(90deg, #1a0f2e, #2b1045, #3a0f4f);
+  color: #ffe0ff;
+  border: 1px solid #51206d;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  margin: 4px 2px;
+  border-radius: 999px;
+  background: #2b1045;
+  color: #ffd1ff;
+  border: 1px solid #4b1b6e;
+}
+
+#workspaces button.active {
+  background: #ff4fd8;
+  color: #110814;
+  box-shadow: 0 0 12px rgba(255, 79, 216, 0.55);
+}
+
+#workspaces button:hover {
+  background: #3a1458;
+}
+
+#clock,
+#tray,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#cpu,
+#memory,
+#custom-cava,
+#custom-hyprsunset,
+#custom-launcher,
+#custom-power,
+#window {
+  padding: 0 12px;
+  margin: 4px 2px;
+  border-radius: 999px;
+  background: #2b1045;
+  border: 1px solid #4b1b6e;
+}
+
+#custom-launcher {
+  background-image: url("icons/hyprland.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0 6px;
+  background-color: #3a1458;
+}
+
+#custom-power {
+  background: #ff7a59;
+  color: #1a0b12;
+}

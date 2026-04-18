@@ -1,0 +1,86 @@
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+window#waybar,
+#waybar {
+  background: transparent;
+  color: #cfefff;
+}
+
+.modules-center {
+  background: rgba(6, 10, 18, 0.92);
+  border: 2px solid #00f5ff;
+  box-shadow: 0 0 16px rgba(0, 245, 255, 0.25), inset 0 0 18px rgba(0, 245, 255, 0.08);
+  padding: 4px 10px;
+  margin-top: 6px;
+  border-radius: 0px;
+}
+
+.modules-center > widget {
+  margin: 0 6px;
+}
+
+#custom-launcher {
+  background-image: url("icons/hyprland.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  min-width: 22px;
+  min-height: 22px;
+  padding: 0 4px;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  margin: 0 2px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  color: #7cefff;
+  background: transparent;
+}
+
+#workspaces button.active {
+  color: #ffffff;
+  background: rgba(0, 245, 255, 0.18);
+  border: 1px solid #00f5ff;
+  box-shadow: inset 0 0 10px rgba(0, 245, 255, 0.35);
+}
+
+#workspaces button:hover {
+  background: rgba(255, 43, 214, 0.18);
+  color: #ffffff;
+}
+
+#tray,
+#clock,
+#cpu,
+#memory,
+#battery,
+#pulseaudio,
+#network,
+#backlight,
+#custom-hyprsunset,
+#custom-cava,
+#custom-power,
+#window {
+  padding: 0 6px;
+}
+
+#clock {
+  color: #ffffff;
+}
+
+#battery.warning {
+  color: #ffb347;
+}
+
+#battery.critical {
+  color: #ff3b3b;
+}
+
+#custom-power {
+  color: #ff2bd6;
+}

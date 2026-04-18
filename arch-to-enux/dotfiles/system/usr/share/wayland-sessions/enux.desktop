@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=EnuxOS
+Comment=EnuxOS session powered by Hyprland
+Exec=Hyprland
+Type=Application
+DesktopNames=Hyprland;EnuxOS

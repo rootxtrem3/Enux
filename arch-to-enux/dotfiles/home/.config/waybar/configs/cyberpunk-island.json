@@ -1,0 +1,150 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "margin": "10 0 0 0",
+  "spacing": 8,
+  "modules-left": [],
+  "modules-center": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "hyprland/window",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "custom/hyprsunset",
+    "custom/cava",
+    "clock",
+    "cpu",
+    "memory",
+    "battery",
+    "tray",
+    "custom/power"
+  ],
+  "modules-right": [],
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format": "{icon}",
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "*": 6
+    },
+    "format-icons": {
+      "1": "󰲠",
+      "2": "󰲢",
+      "3": "󰲤",
+      "4": "󰲦",
+      "5": "󰲨",
+      "6": "󰲪",
+      "7": "󰲬",
+      "8": "󰲮",
+      "9": "󰲰",
+      "10": "󰿬",
+      "active": "",
+      "default": ""
+    }
+  },
+  "hyprland/window": {
+    "separate-outputs": true,
+    "max-length": 40,
+    "rewrite": {
+      "": "󰣇  Desktop"
+    }
+  },
+  "tray": {
+    "spacing": 8
+  },
+  "network": {
+    "interval": 3,
+    "format-wifi": "󰤢  {signalStrength}%",
+    "format-ethernet": "󰈀  {ipaddr}",
+    "format-linked": "󰈀  {ifname}",
+    "format-disconnected": "󰤮",
+    "on-click": "$HOME/.local/bin/enux-network-popup nmtui",
+    "on-click-right": "$HOME/.local/bin/enux-network-popup list"
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "kitty -e pw-top"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "󰃟  {percent}%"
+  },
+  "custom/hyprsunset": {
+    "return-type": "json",
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/hyprsunset.sh",
+    "interval": 5,
+    "on-click": "$HOME/.config/waybar/scripts/hyprsunset.sh toggle",
+    "on-click-right": "$HOME/.config/waybar/scripts/hyprsunset.sh warm",
+    "on-click-middle": "$HOME/.config/waybar/scripts/hyprsunset.sh reset",
+    "tooltip": true
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "󰁹  {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰚥  {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "cpu": {
+    "interval": 3,
+    "format": "󱘚  {usage}%",
+    "on-click": "kitty -e btop"
+  },
+  "memory": {
+    "interval": 3,
+    "format": "󰍛  {percentage}%",
+    "on-click": "kitty -e btop"
+  },
+  "clock": {
+    "interval": 1,
+    "format": "󰃭  {:%a %d %b  %H:%M}",
+    "tooltip-format": "{:%A, %B %d %Y  %H:%M:%S}"
+  },
+  "custom/launcher": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "wofi --show drun"
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "$HOME/.config/wofi/power.sh"
+  },
+  "custom/cava": {
+    "format": "󰎆",
+    "tooltip": true,
+    "tooltip-format": "Open cava visualizer",
+    "on-click": "kitty -e cava"
+  }
+}

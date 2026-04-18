@@ -1,0 +1,47 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "margin": "4 8 0 8",
+  "spacing": 4,
+  "modules-left": [
+    "custom/launcher",
+    "clock",
+    "battery"
+  ],
+  "modules-center": [],
+  "modules-right": [],
+  "battery": {
+    "interval": 10,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "󰁹 {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "clock": {
+    "interval": 1,
+    "format": "󰥔 {:%H:%M}",
+    "tooltip-format": "{:%A, %B %d %Y  %H:%M:%S}"
+  },
+  "custom/launcher": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "wofi --show drun"
+  }
+}

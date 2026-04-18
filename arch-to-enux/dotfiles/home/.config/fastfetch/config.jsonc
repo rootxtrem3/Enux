@@ -1,0 +1,95 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/enux.txt",
+    "padding": {
+      "left": 0,
+      "right": 3,
+      "top": 0,
+    },
+  },
+  "display": {
+    "separator": "  ",
+  },
+  "modules": [
+    "title",
+    "separator",
+    {
+      "type": "custom",
+      "format": "",
+      "key": "╭──────────────────── SYSTEM ────────────────────╮",
+    },
+    {
+      "type": "os",
+      "key": "├─ 󰌢 OS",
+    },
+    {
+      "type": "host",
+      "key": "├─ 󰟀 Host",
+    },
+    {
+      "type": "kernel",
+      "key": "├─  Kernel",
+    },
+    {
+      "type": "uptime",
+      "key": "├─  Uptime",
+    },
+    {
+      "type": "custom",
+      "format": "",
+      "key": "╰────────────────────────────────────────────────╯",
+    },
+    {
+      "type": "custom",
+      "format": "",
+      "key": "╭─────────────────── SOFTWARE ───────────────────╮",
+    },
+    {
+      "type": "packages",
+      "key": "├─ 󰏖 Packages",
+    },
+    {
+      "type": "shell",
+      "key": "├─  Shell",
+    },
+    {
+      "type": "terminal",
+      "key": "├─   Terminal",
+    },
+    {
+      "type": "custom",
+      "format": "",
+      "key": "╰────────────────────────────────────────────────╯",
+    },
+    {
+      "type": "custom",
+      "format": "",
+      "key": "╭─────────────────────────────────── HARDWARE ───────────────────────────────────╮",
+    },
+    {
+      "type": "cpu",
+      "key": "├─  CPU",
+    },
+    {
+      "type": "gpu",
+      "key": "├─ 󰢮 GPU",
+    },
+    {
+      "type": "memory",
+      "key": "├─  Memory",
+    },
+    {
+      "type": "disk",
+      "key": "├─  Storage",
+      "folders": "/",
+      "format": "{size-used} / {size-total} ({size-percentage})",
+    },
+    {
+      "type": "custom",
+      "format": "",
+      "key": "╰────────────────────────────────────────────────────────────────────────────────╯",
+    },
+  ],
+}

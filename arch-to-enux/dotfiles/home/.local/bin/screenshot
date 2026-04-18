@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mode="${1:-area}"
+annotate="${2:-0}"
+
+timestamp=$(date +%Y-%m-%d_%H-%M-%S)
+base_dir="$HOME/Pictures/Screenshots"
+mkdir -p "$base_dir"
+file="$base_dir/${timestamp}.png"
+
+if [[ "$annotate" == "1" ]]; then
+  tmp=$(mktemp --suffix=.png)
+  grimblast --freeze save "$mode" "$tmp"
+  satty -f "$tmp" -o "$file"
+  rm -f "$tmp"
+else
+  grimblast --notify save "$mode" "$file"
+fi
+
+printf '%s\n' "$file"

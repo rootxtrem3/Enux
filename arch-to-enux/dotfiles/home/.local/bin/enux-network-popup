@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mode="${1:-nmtui}"
+
+kitty_base=(
+  kitty
+  --class enux-network-popup
+  --title "Enux Network"
+  --override background=#111111
+  --override foreground=#e6e6e6
+  --override selection_background=#2b2b2b
+  --override selection_foreground=#e6e6e6
+  --override cursor=#bbbbbb
+)
+
+case "$mode" in
+  nmtui)
+    exec "${kitty_base[@]}" nmtui
+    ;;
+  list)
+    exec "${kitty_base[@]}" bash -lc 'nmcli connection show; echo; read -rp "Press Enter to close..." _'
+    ;;
+  *)
+    echo "Usage: $0 [nmtui|list]" >&2
+    exit 1
+    ;;
+esac
